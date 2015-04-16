@@ -7,15 +7,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.srm145.div1.Bonuses;
+import com.srm145.div2.ExerciseMachine;
 
 public class MainTest {
 	public static void main(String[] args) {
-		Bonuses b = new Bonuses();
-		int[] result = b.getDivision(new int[]{485, 324, 263, 143, 470, 292, 304, 188, 100, 254, 296,
-				 255, 360, 231, 311, 275, 93, 463, 115, 366, 197, 470,485, 324, 263, 143, 470, 292, 304, 188, 100, 254, 296,
-				 255, 360, 231, 311, 275, 93, 463, 115, 366, 197, 470});
-		for(int i = 0 ; i < result.length ; i++)
-			System.out.print(result[i]+",");
+//		System.out.print((int)'A');
+		ExerciseMachine b = new ExerciseMachine();
+		int result = b.getPercentages("00:19:16");
+		System.out.println(result);
 	}
 	
 	private void MSTest(){
