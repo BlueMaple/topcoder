@@ -8,12 +8,19 @@ import java.util.Map;
 
 import com.srm145.div1.Bonuses;
 import com.srm145.div2.ExerciseMachine;
+import com.srm146.div1.RectangularGrid;
+import com.srm146.div2.BridgeCrossing;
+import com.srm146.div2.YahtzeeScore;
 
 public class MainTest {
 	public static void main(String[] args) {
 //		System.out.print((int)'A');
-		ExerciseMachine b = new ExerciseMachine();
-		int result = b.getPercentages("00:19:16");
+		//5, 61, 50, 21, 57
+		//44, 63, 30, 1, 9, 53
+		//99, 13, 67, 32, 5, 17     202
+		//10, 10, 1, 10, 10        43
+		BridgeCrossing b = new BridgeCrossing();
+		long result = b.minTime(new int[]{10, 10, 1, 10, 10});
 		System.out.println(result);
 	}
 	
