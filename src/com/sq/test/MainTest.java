@@ -6,111 +6,109 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.srm145.div1.Bonuses;
-import com.srm145.div2.ExerciseMachine;
-import com.srm146.div1.RectangularGrid;
-import com.srm146.div2.BridgeCrossing;
-import com.srm146.div2.YahtzeeScore;
+import com.algorithms.*;
+import com.leetcode.*;
 
 public class MainTest {
 	public static void main(String[] args) {
-//		System.out.print((int)'A');
-		//5, 61, 50, 21, 57
-		//44, 63, 30, 1, 9, 53
-		//99, 13, 67, 32, 5, 17     202
-		//10, 10, 1, 10, 10        43
-		BridgeCrossing b = new BridgeCrossing();
-		long result = b.minTime(new int[]{10, 10, 1, 10, 10});
-		System.out.println(result);
-	}
-	
-	private void MSTest(){
-		BufferedReader reader = new BufferedReader(new InputStreamReader(
-				System.in));
-
-		try {
-			String input = reader.readLine();
-			int cases = Integer.parseInt(input);
-			for (int i = 0; i < cases; i++) {
-				String NMStr = reader.readLine();
-				String[] temp = NMStr.split(" ");
-				int[] NM = new int[2];
-				NM[0] = Integer.parseInt(temp[0]);
-				NM[1] = Integer.parseInt(temp[1]);
-
-				String initStr = reader.readLine();
-				temp = initStr.split(" ");
-				int[] init = new int[NM[1]];
-				for (int index = 0; index < NM[1]; index++) {
-					init[index] = Integer.parseInt(temp[index]);
-				}
-
-				Map<Integer, int[]> moduleMap = new HashMap<Integer, int[]>();
-				
-				readMap(moduleMap, NM[0], reader);
-				
-				calModules(init , moduleMap);
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	private static void calModules(int[] init, Map<Integer, int[]> moduleMap) {
-		int[][] matrix = new int[moduleMap.size()][moduleMap.size()];
-		for(int i = 0 ; i < moduleMap.size() ; i++){
-			for(int j = 0 ; j < moduleMap.size() ; j++){
-				if(i == j)
-					matrix[i][j] = 0;
-				else
-					matrix[i][j] = calMatrix(i , j , moduleMap);
-			}
-		}
+		ValidPalindrome test = new ValidPalindrome();
+		System.out.println(test.isPalindrome(".,"));
 		
-		int[] result = new int[moduleMap.size()];
-		addExecution(init , matrix , result , moduleMap);
-//		for(int index = 0 ; index <result.length ; index++)
-//			System.out.println(result[index]+" ");
-	}
-
-	private static void addExecution(int[] init, int[][] matrix, int[] result,
-			Map<Integer, int[]> moduleMap) {
-		for(int i = 0 ; i < moduleMap.size() ; i++){
-			for(int j = 0 ; j < moduleMap.size() ; j++){
-				System.out.print(matrix[i][j]+" ");
-			}
-			System.out.println();
-		}
-	}
-
-	private static int calMatrix(int i, int j, Map<Integer, int[]> moduleMap) {
-		int[] iOut = moduleMap.get(i);
-		int jIn = moduleMap.get(j)[0];
-		for(int index = 1 ; index < iOut.length ; index++){
-			if(iOut[index] == jIn)
-				return 1;
-		}
+//		String[] test = new String[] { "00010111", "01100101", "10111101",
+//				"00010000", "00100010", "11100111", "10011001", "01001100",
+//				"10010000" };
+//		char[][] testChar = new char[test.length][8];
+//		for(int i = 0 ; i < test.length ; i++){
+//			String s = test[i];
+//			for(int j = 0 ; j < s.length() ; j++){
+//				testChar[i][j] = s.charAt(j);
+//				System.out.print(s.charAt(j)+" ");
+//			}
+//			System.out.println();
+//		}
 		
-		return 0;
+		
+		// PerfectSquares test = new PerfectSquares();
+		// System.out.println(test.numSquares(12));
+
+		// HeapSort sort = new HeapSort();
+		// int[] test = new int[]{21,7,13,5,7,1,2,3};
+		// sort.heapSort(test);
+		// for (int l = 0; l < test.length; l++) {
+		// System.out.print(test[l]+", ");
+		// }
+
+		// UniquePathsII test = new UniquePathsII();
+		// System.out.println(test.uniquePathsWithObstacles(new int[][] {
+		// { 0, 0, 0 }, {0,1,0},{0,0,0} }));
+		// MaximumSubarray test = new MaximumSubarray();
+		// System.out.println(test.maxSubArray(new
+		// int[]{-2,1,-3,4,-1,2,1,-5,4}));
+
+		// BuyAndSellStockIV test = new BuyAndSellStockIV();
+		// System.out.println(test.maxProfit(4,new int[]{3,5,4,2,11}));
+
+		// BitwiseAND test = new BitwiseAND();
+		// System.out.println(test.rangeBitwiseAnd_better(21, 23));
+		// int a = 8;
+		// System.out.println(a<<=1);
+
+		// String str1 = "ABCDEDD";
+		// String str2 = "AEFeAAD";
+		// int m = str1.length();
+		// int n = str2.length();
+		// int[][] c = new int[m+1][n+1];
+		// System.out.println("lcs长度为"+lcs_len(str1,str2,c));
+		// System.out.println("lcs序列为");
+		// print_lcs(str1,str2,c);
+
 	}
 
-	private static void readMap(Map<Integer, int[]> moduleMap, int row,
-			BufferedReader reader) throws IOException {
-		for(int i = 0 ; i < row ; i++){
-			String module = reader.readLine();
-			String[] temp = module.split(" ");
-			int in = Integer.parseInt(temp[0]);
-			int outNumb = Integer.parseInt(temp[1]);
-			int[] out = new int[outNumb+1];
-			out[0] = in;
-			for(int index = 1 ; index < outNumb+1 ; index++){
-				out[index] = Integer.parseInt(temp[index+1]);
-			}
-			
-			moduleMap.put(row, out);
+	public static int lcs_len(String str1, String str2, int[][] c) {
+		if (str1 == null || str2 == null) {
+			return -1;
 		}
+
+		int m = str1.length();
+		int n = str2.length();
+		for (int i = 1; i <= m; i++) {
+			c[i][0] = 0;
+		}
+		for (int i = 0; i <= n; i++) {
+			c[0][i] = 0;
+		}
+		for (int i = 1; i <= m; i++) {
+			for (int j = 1; j <= n; j++) {
+				if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+					c[i][j] = c[i - 1][j - 1] + 1;
+				} else if (c[i - 1][j] >= c[i][j - 1]) {
+					c[i][j] = c[i - 1][j];
+				} else
+					c[i][j] = c[i][j - 1];
+			}
+		}
+		return c[m][n];
 	}
 
+	public static void print_lcs(String str1, String str2, int[][] c) {
+		int k = 0;
+		int i = str1.length();
+		int j = str2.length();
+		char[] temp = new char[c[i][j]];
+		while (c[i][j] > 0) {
+			if (str1.charAt(i - 1) == str2.charAt(j - 1)) {
+				temp[k] = str1.charAt(i - 1);
+				k++;
+				i--;
+				j--;
+			} else if (c[i][j] == c[i - 1][j])
+				i--;
+			else
+				j--;
+		}
+		for (int l = temp.length - 1; l >= 0; l--) {
+			System.out.print(temp[l]);
+		}
+
+	}
 }
